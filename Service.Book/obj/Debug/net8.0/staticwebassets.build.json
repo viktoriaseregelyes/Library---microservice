@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "ngZToVjT7OPXEgj2+sJbNAIVMfseOCDvOoWql2I6xhs=",
+  "Source": "Service.Book",
+  "BasePath": "_content/Service.Book",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

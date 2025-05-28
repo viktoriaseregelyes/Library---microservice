@@ -1,0 +1,28 @@
+[
+  {
+    "ContainingType": "Service.Book.Controllers.BookController",
+    "Method": "AddBook",
+    "RelativePath": "api/Book/AddBook",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createBook",
+        "Type": "Service.Book.CreateBook",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Service.Book.Controllers.BookController",
+    "Method": "GetAllBooks",
+    "RelativePath": "api/Book/ListBooks",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

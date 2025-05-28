@@ -1,0 +1,261 @@
+name: dockercompose3530775753387608026
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo:6.0
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 27017
+        published: "27017"
+        protocol: tcp
+    volumes:
+      - type: volume
+        source: mongo-data
+        target: /data/db
+        volume: {}
+  mssql-db:
+    container_name: mssql-db
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: YourPassword123
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 1433
+        published: "1433"
+        protocol: tcp
+    volumes:
+      - type: volume
+        source: mssql-data
+        target: /var/opt/mssql
+        volume: {}
+  service.book:
+    build:
+      context: C:\Users\User\source\repos\Library\Service.User
+      dockerfile: Service.Book/Dockerfile
+      args:
+        BUILD_CONFIGURATION: Debug
+        LAUNCHING_FROM_VS: "true"
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: Service.Book
+      target: base
+    depends_on:
+      mssql-db:
+        condition: service_started
+        required: true
+    entrypoint:
+      - dotnet
+      - --roll-forward
+      - Major
+      - /VSTools/DistrolessHelper/DistrolessHelper.dll
+      - --wait
+    environment:
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      ConnectionStrings__DatabaseConnection: Server=localhost,1433;Database=Books;User ID=sa;Password=YourPassword123;Persist Security Info=False;TrustServerCertificate=true;;
+      DOTNET_USE_POLLING_FILE_WATCHER: "1"
+      NUGET_FALLBACK_PACKAGES: /.nuget/fallbackpackages
+    image: servicebook:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages  "/app/bin/Debug/net8.0/Service.Book.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 8081
+        published: "5002"
+        protocol: tcp
+    tty: true
+    volumes:
+      - type: bind
+        source: C:\Users\User\source\repos\Library\Service.User\Service.Book
+        target: /app
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\User\source\repos\Library\Service.User
+        target: /src
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\User\vsdbg\vs2017u5
+        target: /remote_debugger
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\User\.nuget\packages
+        target: /.nuget/packages
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages
+        target: /.nuget/fallbackpackages
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\User\AppData\Roaming\ASP.NET\Https
+        target: /root/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\User\AppData\Roaming\ASP.NET\Https
+        target: /home/app/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\User\AppData\Roaming\Microsoft\UserSecrets
+        target: /root/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\User\AppData\Roaming\Microsoft\UserSecrets
+        target: /home/app/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net8.0
+        target: /VSTools
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\HotReload
+        target: /HotReloadAgent
+        read_only: true
+        bind:
+          create_host_path: true
+  service.user:
+    build:
+      context: C:\Users\User\source\repos\Library\Service.User
+      dockerfile: Service.User/Dockerfile
+      args:
+        BUILD_CONFIGURATION: Debug
+        LAUNCHING_FROM_VS: "true"
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: Service.User
+      target: base
+    depends_on:
+      mongodb:
+        condition: service_started
+        required: true
+    entrypoint:
+      - dotnet
+      - --roll-forward
+      - Major
+      - /VSTools/DistrolessHelper/DistrolessHelper.dll
+      - --wait
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTP_PORTS: "8080"
+      ASPNETCORE_HTTPS_PORTS: "8081"
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      DOTNET_USE_POLLING_FILE_WATCHER: "1"
+      MongoDbSettings__ConnectionString: mongodb://host.docker.internal:27017
+      MongoDbSettings__DatabaseName: Users
+      NUGET_FALLBACK_PACKAGES: /.nuget/fallbackpackages
+    image: serviceuser:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages  "/app/bin/Debug/net8.0/Service.User.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 8081
+        published: "5001"
+        protocol: tcp
+      - mode: ingress
+        target: 8080
+        protocol: tcp
+      - mode: ingress
+        target: 8081
+        protocol: tcp
+    tty: true
+    volumes:
+      - type: bind
+        source: C:\Users\User\AppData\Roaming\Microsoft\UserSecrets
+        target: /home/app/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\User\AppData\Roaming\Microsoft\UserSecrets
+        target: /root/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\User\AppData\Roaming\ASP.NET\Https
+        target: /home/app/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\User\AppData\Roaming\ASP.NET\Https
+        target: /root/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\User\source\repos\Library\Service.User\Service.User
+        target: /app
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\User\source\repos\Library\Service.User
+        target: /src
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\User\vsdbg\vs2017u5
+        target: /remote_debugger
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\User\.nuget\packages
+        target: /.nuget/packages
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages
+        target: /.nuget/fallbackpackages
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net8.0
+        target: /VSTools
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\HotReload
+        target: /HotReloadAgent
+        read_only: true
+        bind:
+          create_host_path: true
+networks:
+  default:
+    name: dockercompose3530775753387608026_default
+volumes:
+  mongo-data:
+    name: dockercompose3530775753387608026_mongo-data
+  mssql-data:
+    name: dockercompose3530775753387608026_mssql-data

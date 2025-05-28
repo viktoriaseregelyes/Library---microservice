@@ -1,0 +1,50 @@
+services:
+  service.user:
+    image: ${DOCKER_REGISTRY-}serviceuser
+    build:
+      context: .
+      dockerfile: Service.User/Dockerfile
+    depends_on:
+      - mongodb
+    ports:
+      - "50000:8080"
+      - "50001:8081"
+    environment:
+      - MongoDbSettings__ConnectionString=mongodb://host.docker.internal:27017
+      - MongoDbSettings__DatabaseName=Users
+
+  service.book:
+    image: ${DOCKER_REGISTRY-}servicebook
+    build:
+      context: .
+      dockerfile: Service.Book/Dockerfile
+    depends_on:
+      - postgres
+    ports:
+      - "50010:8080"
+      - "50011:8081"
+  
+  mongodb:
+    image: mongo:6.0
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  postgres:
+    image: postgres
+    container_name: postgres-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: Books
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  mongo-data: {}
+  pgdata: {}

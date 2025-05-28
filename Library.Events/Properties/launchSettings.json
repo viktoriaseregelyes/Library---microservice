@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Library.Events": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

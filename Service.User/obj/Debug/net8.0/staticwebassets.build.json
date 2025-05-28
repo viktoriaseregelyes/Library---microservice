@@ -1,0 +1,24 @@
+{
+  "Version": 1,
+  "Hash": "2Bug+i5l96dGZ6Ucm+Gri5eocKMkqy65uqdLvwfoheY=",
+  "Source": "Service.User",
+  "BasePath": "_content/Service.User",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\User\\source\\repos\\Library\\Service.User\\Service.Book\\Service.Book.csproj",
+      "Version": 2,
+      "Source": "Service.Book",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

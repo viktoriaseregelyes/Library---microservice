@@ -1,0 +1,114 @@
+name: dockercompose3530775753387608026
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo:6.0
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 27017
+        published: "27017"
+        protocol: tcp
+    volumes:
+      - type: volume
+        source: mongo-data
+        target: /data/db
+        volume: {}
+  mssql-db:
+    container_name: mssql-db
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: YourPassword123
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 1433
+        published: "1433"
+        protocol: tcp
+    volumes:
+      - type: volume
+        source: mssql-data
+        target: /var/opt/mssql
+        volume: {}
+  service.book:
+    build:
+      context: C:\Users\User\source\repos\Library\Service.User
+      dockerfile: Service.Book/Dockerfile
+    depends_on:
+      mssql-db:
+        condition: service_started
+        required: true
+    environment:
+      ConnectionStrings__DatabaseConnection: Server=localhost,1433;Database=Books;User ID=sa;Password=YourPassword123;Persist Security Info=False;TrustServerCertificate=true;;
+    image: servicebook
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 8081
+        published: "5002"
+        protocol: tcp
+  service.user:
+    build:
+      context: C:\Users\User\source\repos\Library\Service.User
+      dockerfile: Service.User/Dockerfile
+    depends_on:
+      mongodb:
+        condition: service_started
+        required: true
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTP_PORTS: "8080"
+      ASPNETCORE_HTTPS_PORTS: "8081"
+      MongoDbSettings__ConnectionString: mongodb://host.docker.internal:27017
+      MongoDbSettings__DatabaseName: Users
+    image: serviceuser
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 8081
+        published: "5001"
+        protocol: tcp
+      - mode: ingress
+        target: 8080
+        protocol: tcp
+      - mode: ingress
+        target: 8081
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: C:\Users\User\AppData\Roaming/Microsoft/UserSecrets
+        target: /home/app/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\User\AppData\Roaming/Microsoft/UserSecrets
+        target: /root/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\User\AppData\Roaming/ASP.NET/Https
+        target: /home/app/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\User\AppData\Roaming/ASP.NET/Https
+        target: /root/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+networks:
+  default:
+    name: dockercompose3530775753387608026_default
+volumes:
+  mongo-data:
+    name: dockercompose3530775753387608026_mongo-data
+  mssql-data:
+    name: dockercompose3530775753387608026_mssql-data

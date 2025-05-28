@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>1d8eb4a5-6550-43e8-ba2f-059ae3dc1f95</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MassTransit" Version="8.3.7" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.3.7" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
+    <PackageReference Include="MongoDB.Bson" Version="3.2.1" />
+    <PackageReference Include="MongoDB.Driver" Version="3.2.1" />
+    <PackageReference Include="RabbitMQ.Client" Version="7.1.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Service.Book\Service.Book.csproj" />
+    <ProjectReference Include="..\Service.User.ServiceDefaults\Library.ServiceDefaults.csproj" />
+	<ProjectReference Include="..\Library.Events\Library.Events.csproj" />
+  </ItemGroup>
+
+</Project>
