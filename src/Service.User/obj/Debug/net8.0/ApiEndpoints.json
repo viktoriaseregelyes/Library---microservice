@@ -1,0 +1,118 @@
+[
+  {
+    "ContainingType": "Service.Book.Controllers.BookController",
+    "Method": "AddBook",
+    "RelativePath": "api/Book/AddBook",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createBook",
+        "Type": "Service.Book.CreateBook",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Service.Book.Controllers.BookController",
+    "Method": "GetAllBooks",
+    "RelativePath": "api/Book/ListBooks",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Service.User.Controllers.UserController",
+    "Method": "CreateUser",
+    "RelativePath": "api/User",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newUser",
+        "Type": "Service.User.User",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Service.User.Controllers.UserController",
+    "Method": "GetUserById",
+    "RelativePath": "api/User/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Service.User.Controllers.UserController",
+    "Method": "DeleteUserById",
+    "RelativePath": "api/User/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Service.User.Controllers.UserController",
+    "Method": "BorrowABook",
+    "RelativePath": "api/User/BorrowABook",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "book",
+        "Type": "Service.User.IntegrationEvents.BorrowBook",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Service.User.Controllers.UserController",
+    "Method": "GetAllUsers",
+    "RelativePath": "api/User/ListUsers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Service.User.Controllers.UserController",
+    "Method": "ReturnABook",
+    "RelativePath": "api/User/ReturnABook",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "book",
+        "Type": "Service.User.IntegrationEvents.BorrowBook",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

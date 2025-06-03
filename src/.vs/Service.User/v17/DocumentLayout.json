@@ -1,0 +1,97 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\Library\\Service.User\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9E9A46AF-B543-4E2B-B552-2266AEBE3562}|Service.Book\\Service.Book.csproj|c:\\users\\user\\source\\repos\\library\\service.user\\service.book\\integrationeventhandlers\\deleteuserhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E9A46AF-B543-4E2B-B552-2266AEBE3562}|Service.Book\\Service.Book.csproj|solutionrelative:service.book\\integrationeventhandlers\\deleteuserhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E9A46AF-B543-4E2B-B552-2266AEBE3562}|Service.Book\\Service.Book.csproj|c:\\users\\user\\source\\repos\\library\\service.user\\service.book\\integrationeventhandlers\\borroweventhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E9A46AF-B543-4E2B-B552-2266AEBE3562}|Service.Book\\Service.Book.csproj|solutionrelative:service.book\\integrationeventhandlers\\borroweventhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA80AF0D-2BD5-5933-5AC4-30B894B3C6C9}|Service.User\\Service.User.csproj|c:\\users\\user\\source\\repos\\library\\service.user\\service.user\\integrationevents\\userbooksreturnedhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA80AF0D-2BD5-5933-5AC4-30B894B3C6C9}|Service.User\\Service.User.csproj|solutionrelative:service.user\\integrationevents\\userbooksreturnedhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 251,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BorrowEventHandler.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Library\\Service.User\\Service.Book\\IntegrationEventHandlers\\BorrowEventHandler.cs",
+              "RelativeDocumentMoniker": "Service.Book\\IntegrationEventHandlers\\BorrowEventHandler.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Library\\Service.User\\Service.Book\\IntegrationEventHandlers\\BorrowEventHandler.cs",
+              "RelativeToolTip": "Service.Book\\IntegrationEventHandlers\\BorrowEventHandler.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBQAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T12:03:12.236Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DeleteUserHandler.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Library\\Service.User\\Service.Book\\IntegrationEventHandlers\\DeleteUserHandler.cs",
+              "RelativeDocumentMoniker": "Service.Book\\IntegrationEventHandlers\\DeleteUserHandler.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Library\\Service.User\\Service.Book\\IntegrationEventHandlers\\DeleteUserHandler.cs",
+              "RelativeToolTip": "Service.Book\\IntegrationEventHandlers\\DeleteUserHandler.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAgwB8AAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T11:34:07.755Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 163,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserBooksReturnedHandler.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Library\\Service.User\\Service.User\\IntegrationEvents\\UserBooksReturnedHandler.cs",
+              "RelativeDocumentMoniker": "Service.User\\IntegrationEvents\\UserBooksReturnedHandler.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Library\\Service.User\\Service.User\\IntegrationEvents\\UserBooksReturnedHandler.cs",
+              "RelativeToolTip": "Service.User\\IntegrationEvents\\UserBooksReturnedHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T11:31:49.127Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
